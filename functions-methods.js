@@ -53,10 +53,14 @@ console.log(typeOfEmail('novi.nlaapjesk@outlook.com'))
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
 function checkEmailValidity(mailadres) {
-
+    let foundComma = mailadres.includes(',');
+    let foundDot = mailadres.lastIndexOf('.')
+    if (foundComma || foundDot) {
+        return 'there is a unexpected caracther in the string, therefore it is invalid';
+    } else
     return mailadres.includes('@')
 }
-const output = checkEmailValidity('ba,meijer@outlook.com');
+const output = checkEmailValidity('bammeijer@outlook.com');
 console.log(output);
 
-//kon helaas de functie om iets te exluden niet vinden :(
+//kon helaas de functie om iets te exluden niet vinden :( -> eerst zoeken naar de karaket, die opslaan in variabele en dan error gevonden wanneer gevonden.
